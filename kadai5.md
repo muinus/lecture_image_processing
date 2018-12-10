@@ -26,33 +26,33 @@ ORG = rgb2gray(ORG);
 
 閾値tで画像を二つのクラスに分けたとき、その2つのクラスのクラス間分散の各クラス内分散に対する比の値が最も大きくなるようにtの値を求める。
 
-まず、閾値をiとしたとき、ヒストグラムを2つのクラスに分け、C1、C2にそれぞれ代入する。
-C1 = H(1:i); %1~iまで
-C2 = H(i+1:256); %i+1~256まで
+まず、閾値をiとしたとき、ヒストグラムを2つのクラスに分け、C1、C2にそれぞれ代入する。  
+C1 = H(1:i); %1~iまで  
+C2 = H(i+1:256); %i+1~256まで  
 
-続いて、それぞれのクラスの画素数、平均値、分散を計算し、変数に代入する。
-n1 = sum(C1); %画素数の算出
-n2 = sum(C2);
-myu1 = mean(C1); %平均値の算出
-myu2 = mean(C2);
-sigma1 = var(C1); %分散の算出
-sigma2 = var(C2);
+続いて、それぞれのクラスの画素数、平均値、分散を計算し、変数に代入する。  
+n1 = sum(C1); %画素数の算出  
+n2 = sum(C2);  
+myu1 = mean(C1); %平均値の算出  
+myu2 = mean(C2);  
+sigma1 = var(C1); %分散の算出  
+sigma2 = var(C2);  
 
-次に、クラス内分散とクラス間分散を計算する
-sigma_w = (n1 *sigma1+n2*sigma2)/(n1+n2); %クラス内分散の算出
-sigma_B = (n1 *(myu1-myu_T)^2+n2*(myu2-myu_T)^2)/(n1+n2); %クラス間分散の算出
+次に、クラス内分散とクラス間分散を計算する。  
+sigma_w = (n1 *sigma1+n2*sigma2)/(n1+n2); %クラス内分散の算出  
+sigma_B = (n1 *(myu1-myu_T)^2+n2*(myu2-myu_T)^2)/(n1+n2); %クラス間分散の算出  
 
-最後にクラス内分散とクラス間分散の比を求め、今までの値よりも大きければ保持する。
-if max_val<sigma_B/sigma_w
-max_val = sigma_B/sigma_w;
-max_thres =i;
+最後にクラス内分散とクラス間分散の比を求め、今までの値よりも大きければ保持する。  
+if max_val<sigma_B/sigma_w  
+max_val = sigma_B/sigma_w;  
+max_thres =i;  
 
 以上の処理をすべての閾値のパターンで行い、最適な閾値を求める。
 
 
-IMG = ORG > max_thres;
-imagesc(IMG); colormap(gray); colorbar;
-pause;
+IMG = ORG > max_thres;  
+imagesc(IMG); colormap(gray); colorbar;  
+pause;  
 
 によって、求めた閾値を使った2値化を行う。図3に結果を示す。
 ![判別法による2値化](https://github.com/muinus/lecture_image_processing/blob/master/kadai5/kadai5_1.JPG?raw=true)   
