@@ -31,7 +31,7 @@ imagesc(IMG); colormap(gray); colorbar; % 画像の表示
 によって2値化された画像を図3に示す。
 
 ![2値画像](https://github.com/muinus/lecture_image_processing/blob/master/kadai6/kadai6_2.JPG?raw=true)   
-図2 通常の閾値による2値化画像  
+図3 通常の閾値による2値化画像  
 
 今度はディザ法を使った2値化を行う。ディザ法とはあらかじめ決められた画像の位置ごとの閾値が決まったフィルター（ディザマトリクス）と画像を比較し、その大小関係で出力画像の濃度値を決定する方法である。
 
@@ -41,4 +41,4 @@ imagesc(IMG); colormap(gray); colorbar; % 画像の表示
 によって2値化された画像を図4に示す。
 
 ![ディザ2値画像](https://github.com/muinus/lecture_image_processing/blob/master/kadai6/kadai6_3.JPG?raw=true)   
-図2 ディザ法による2値化画像  
+図4 ディザ法による2値化画像  
